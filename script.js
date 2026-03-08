@@ -4,4 +4,3 @@ async function loadPokemon() {
     console.log(responseToJson);
     document.getElementById('pokemon-container').innerHTML += getPokemonTemplate(responseToJson);   
 }
-loadPokemon();
