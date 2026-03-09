@@ -10,10 +10,30 @@
     flex-direction: column;
     align-items: center;
     border: solid;
+    border-radius: 10px;
     color: white;
     padding: 20px;
     background-color: rgb(70, 70, 78);
-    max-width: 100%;
+    transition: transform 0.2s;
+}
+
+
+.pokemonCard:hover{
+    transform: scale(1.05);
+} 
+
+.typeIcon {
+    width: 20px;
+}
+
+
+
+.pokemonContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
 }
 
 .pokemonImage {

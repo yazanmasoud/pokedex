@@ -1,3 +1,8 @@
+function init() {
+    loadPokemon();
+}
+
+
 async function loadPokemon() {
     let response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0");
     let responseToJson = await response.json();
@@ -8,8 +13,6 @@ async function loadPokemon() {
         let pokemonResponse = await fetch(pokemon.url);
         let pokemonResponseToJson = await pokemonResponse.json();
         console.log(pokemonResponseToJson);
-        document.getElementById('pokemon-container').innerHTML += getPokemonTemplate(pokemonResponseToJson);
-        
-        
+        document.getElementById('pokemon-container').innerHTML += getPokemonTemplate(pokemonResponseToJson);  
     }
 }
