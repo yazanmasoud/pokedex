@@ -1,3 +1,9 @@
+/* Content */
+.content {
+    max-width: 1920px;
+    margin: auto;
+}
+
 /* Header */
 .headerInner {
     background-color: aqua;
@@ -13,24 +19,24 @@
     border-radius: 10px;
     color: white;
     padding: 20px;
-    background-color: rgb(70, 70, 78);
+    background-color: rgb(64, 64, 68);
     transition: transform 0.2s;
 }
 
 
-.pokemonCard:hover{
+.pokemonCard:hover {
     transform: scale(1.05);
-} 
+}
 
 .typeIcon {
-    width: 20px;
+    width: 40px;
 }
 
 
 
-.pokemonContainer{
+.pokemonContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-columns: repeat(4, 200px);
     gap: 20px;
     justify-content: center;
     padding: 20px;
@@ -44,6 +50,24 @@
     margin-top: 0;
 }
 
+
+/* Dialog */
+.pokemonDialog {
+    width: 400px;
+    height: 400px;
+    background-color: rgb(133, 133, 136);
+    border-color: white;
+    border-radius: 10px;
+}
+
+.esc-img{
+    width: 30px
+}
+
+.dialogHeader{
+    display: flex;
+    justify-content: space-between;
+}
 /* Footer */
 .footerInner {
     background-color: aqua;

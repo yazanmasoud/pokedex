@@ -12,3 +12,9 @@ main {
     align-items: center;
     justify-content: center;
 }
+
+button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}

@@ -1,3 +1,5 @@
+let allPokemon = [];
+
 function init() {
     loadPokemon();
 }
@@ -12,7 +14,22 @@ async function loadPokemon() {
         const pokemon = pokemonList[i];
         let pokemonResponse = await fetch(pokemon.url);
         let pokemonResponseToJson = await pokemonResponse.json();
-        console.log(pokemonResponseToJson);
-        document.getElementById('pokemon-container').innerHTML += getPokemonTemplate(pokemonResponseToJson);  
+        allPokemon.push(pokemonResponseToJson);
+
+        document.getElementById('pokemon-container').innerHTML += getPokemonTemplate(pokemonResponseToJson, i);
     }
+}
+
+
+function openPokemonDialog(index) {
+    let pokemon = allPokemon[index];
+    const pokemonDialog = document.getElementById('pokemon-dialog');
+    pokemonDialog.innerHTML = `
+    <h2>${pokemon.name}</h2>
+    <img src="${pokemon.sprites.front_default}" alt="" />
+    `;
+    console.log(allPokemon);
+    
+    pokemonDialog.showModal();
+
 }
