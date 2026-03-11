@@ -23,6 +23,9 @@
     transition: transform 0.2s;
 }
 
+.pokemonCard:hover{
+    cursor: pointer;
+}
 
 .pokemonCard:hover {
     transform: scale(1.05);
@@ -31,8 +34,6 @@
 .typeIcon {
     width: 40px;
 }
-
-
 
 .pokemonContainer {
     display: grid;
@@ -50,14 +51,25 @@
     margin-top: 0;
 }
 
-
 /* Dialog */
+dialog::backdrop {
+    background: rgba(0,0,0,0.4);
+}
+
 .pokemonDialog {
     width: 400px;
-    height: 400px;
+    height: 500px;
     background-color: rgb(133, 133, 136);
     border-color: white;
     border-radius: 10px;
+    padding: 0;
+}
+
+.pokemonDialogInner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .esc-img{
@@ -65,9 +77,25 @@
 }
 
 .dialogHeader{
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
+
+.dialogImage{
+    width: 250px;
+    height: 250px;
+}
+
+.pokemonInDialog{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+
 /* Footer */
 .footerInner {
     background-color: aqua;
