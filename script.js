@@ -21,15 +21,10 @@ async function loadPokemon() {
 }
 
 
-function openPokemonDialog(index) {
+function togglePokemonDialog(index) {
     let pokemon = allPokemon[index];
     const pokemonDialog = document.getElementById('pokemon-dialog');
-    pokemonDialog.innerHTML = `
-    <h2>${pokemon.name}</h2>
-    <img src="${pokemon.sprites.front_default}" alt="" />
-    `;
+    pokemonDialog.innerHTML = getPokemonDialogTemplate(pokemon , index);
     console.log(allPokemon);
-    
-    pokemonDialog.showModal();
-
+    pokemonDialog.open ? pokemonDialog.close() : pokemonDialog.showModal();
 }
