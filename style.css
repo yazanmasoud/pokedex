@@ -6,7 +6,7 @@
 
 /* Header */
 .headerInner {
-    background-color: aqua;
+    background-color: rgba(251, 61, 61, 0.799);
     height: 70px;
 }
 
@@ -23,7 +23,7 @@
     transition: transform 0.2s;
 }
 
-.pokemonCard:hover{
+.pokemonCard:hover {
     cursor: pointer;
 }
 
@@ -53,52 +53,64 @@
 
 /* Dialog */
 dialog::backdrop {
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.dialogHeader button:hover{
+    transform: scale(1.2);
 }
 
 .pokemonDialog {
-    width: 400px;
+    width: 420px;
     height: 500px;
-    background-color: rgb(133, 133, 136);
-    border-color: white;
-    border-radius: 10px;
-    padding: 0;
+    border: none;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #3c3f44, #2b2d31);
+    padding: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
-.pokemonDialogInner{
+.pokemonDialogInner {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 15px;
 }
 
-.esc-img{
+.esc-img {
     width: 30px
 }
 
-.dialogHeader{
+.dialogHeader {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.dialogImage{
+.dialogImage {
     width: 250px;
     height: 250px;
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.4));
 }
 
-.pokemonInDialog{
+.pokemonInDialog {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 10px;
+    gap: 40px;
     width: 100%;
+    color: white;
+}
+
+.dialogPokemonName {
+    color: white;
+    font-size: 28px;
+    text-transform: capitalize;
+    margin: 0;
 }
 
 /* Footer */
 .footerInner {
-    background-color: aqua;
+    background-color: rgba(250, 32, 32, 0.799);
     height: 70px;
 }
 

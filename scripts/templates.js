@@ -15,15 +15,15 @@ function getPokemonDialogTemplate(pokemon, index) {
     return `
     <div class="pokemonDialogInner">
     <div class="dialogHeader">
-        <h2>${pokemon.name}</h2>
+        <h2 class="dialogPokemonName">${pokemon.name}</h2>
         <button onclick ="closePokemonDialog(${index})"><img class="esc-img" src="./icons/delete.svg" alt="Pokemon Dialog photo"></button>
     </div>
     
     <img class ="dialogImage" src="${pokemon.sprites.other["official-artwork"].front_default}" alt="" />
     <div class="pokemonInDialog">
-        <span><strong>height: </strong>${pokemon.height}</span>
-        <span><strong>weight: </strong>${pokemon.weight}</span>
-        <span><strong>id: </strong>${pokemon.id}</span>
+        <span><strong>height: </strong>${(pokemon.height * 0.1).toFixed(1)} M</span>
+        <span><strong>weight: </strong>${(pokemon.weight) * 0.1.toFixed(2)} KG</span>
+        <span><strong>Base-experience: </strong>${pokemon.base_experience}</span>
     </div>
     </div>
     `;
