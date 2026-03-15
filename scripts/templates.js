@@ -69,8 +69,8 @@ function getPokemonDialogTemplate(pokemon, index) {
             </div>
         </div>
         <div class ="prevNextButtons">
-                <button><img src="./icons/arrow.png" alt="left arrow" /></button>
-                <button><img src="./icons/right-arrow.png" alt="right arrow" /></button>   
+                <button onclick="openPokemonDialog(${index -1})"><img src="./icons/arrow.png" alt="left arrow" /></button>
+                <button onclick="openPokemonDialog(${index +1})"><img src="./icons/right-arrow.png" alt="right arrow" /></button>   
         </div>
     </div>
     `;

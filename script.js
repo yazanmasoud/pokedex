@@ -24,9 +24,7 @@ async function loadPokemon() {
 
 
 function openPokemonDialog(index) {
-    let pokemon = allPokemon[index];
-    console.log(pokemon);
-    
+    let pokemon = allPokemon[index];    
     const pokemonDialog = document.getElementById('pokemon-dialog');
     pokemonDialog.innerHTML = getPokemonDialogTemplate(pokemon, index);
     pokemonDialog.showModal();
@@ -51,4 +49,9 @@ function openDialogMain() {
     pokemonmain.classList.remove("none");
     pokemonStatus.classList.add("none");
 
+}
+
+function openNextPokemonDialog() {
+    let nextPokemon = allPokemon[index +1];
+    openPokemonDialog();
 }
