@@ -145,7 +145,25 @@ dialog::backdrop {
     ;
 }
 
-.dialogNavBar a {
+.navButton{
+    background: transparent;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: gray;
+}
+
+.navButton.active{
+    background-color: #ff5350;
+    color: white;
+    border-radius: 8px;
+}
+
+.naVLinkLightEffect {
+    background-color: white;
+}
+
+.dialogNavBar button {
     text-decoration: none;
     color: white;
     cursor: pointer;

@@ -39,19 +39,27 @@ function closePokemonDialog() {
 function openDialogStatus() {
     let pokemonmain = document.getElementById('pokemon-main');
     let pokemonStatus = document.getElementById('pokemon-status');
+    let navButtonMain = document.getElementById('nav-button-main');
+    let navButtonStats = document.getElementById('nav-button-stats');
     pokemonmain.classList.add("none");
     pokemonStatus.classList.remove("none");
+    navButtonMain.classList.remove("active");
+    navButtonStats.classList.add("active");
 }
 
 function openDialogMain() {
     let pokemonmain = document.getElementById('pokemon-main');
     let pokemonStatus = document.getElementById('pokemon-status');
+    let navButtonMain = document.getElementById('nav-button-main');
+    let navButtonStats = document.getElementById('nav-button-stats');
     pokemonmain.classList.remove("none");
     pokemonStatus.classList.add("none");
-
+        navButtonMain.classList.add("active");
+    navButtonStats.classList.remove("active");
 }
 
 function openNextPokemonDialog() {
     let nextPokemon = allPokemon[index +1];
     openPokemonDialog();
 }
+

@@ -26,8 +26,8 @@ function getPokemonDialogTemplate(pokemon, index) {
         <img class="dialogImage" src="${pokemon.sprites.other["official-artwork"].front_default}" />
 
         <nav class="dialogNavBar">
-            <a onclick="openDialogMain()">Main</a>
-            <a onclick="openDialogStatus()">Status</a>
+            <button id= "nav-button-main" class="navButton active" onclick="openDialogMain()">Main </button>
+            <button id= "nav-button-stats" class="navButton" onclick="openDialogStatus()">Status</button>
         </nav>
 
         <div id="pokemon-main" class="pokemonMain">
