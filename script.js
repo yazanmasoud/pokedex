@@ -1,5 +1,5 @@
 let allPokemon = [];
-
+let currentDialogTab = "main";
 function init() {
     loadPokemon();
 }
@@ -15,19 +15,24 @@ async function loadPokemon() {
         const pokemon = pokemonList[i];
         let pokemonResponse = await fetch(pokemon.url);
         let pokemonResponseToJson = await pokemonResponse.json();
-        
+
         allPokemon.push(pokemonResponseToJson);
-        
+
         document.getElementById('pokemon-container').innerHTML += getPokemonTemplate(pokemonResponseToJson, i);
     }
 }
 
 
 function openPokemonDialog(index) {
-    let pokemon = allPokemon[index];    
+    let pokemon = allPokemon[index];
     const pokemonDialog = document.getElementById('pokemon-dialog');
     pokemonDialog.innerHTML = getPokemonDialogTemplate(pokemon, index);
     pokemonDialog.showModal();
+    if (currentDialogTab === "main"){
+        openDialogMain();
+    }else {
+        openDialogStatus();
+    }
 }
 
 function closePokemonDialog() {
@@ -45,6 +50,8 @@ function openDialogStatus() {
     pokemonStatus.classList.remove("none");
     navButtonMain.classList.remove("active");
     navButtonStats.classList.add("active");
+    currentDialogTab = "stats";
+
 }
 
 function openDialogMain() {
@@ -54,12 +61,10 @@ function openDialogMain() {
     let navButtonStats = document.getElementById('nav-button-stats');
     pokemonmain.classList.remove("none");
     pokemonStatus.classList.add("none");
-        navButtonMain.classList.add("active");
+    navButtonMain.classList.add("active");
     navButtonStats.classList.remove("active");
+    currentDialogTab = "main"
 }
 
-function openNextPokemonDialog() {
-    let nextPokemon = allPokemon[index +1];
-    openPokemonDialog();
-}
+
 

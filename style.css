@@ -74,7 +74,7 @@ dialog::backdrop {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px; 
+    gap: 10px;
 }
 
 .esc-img {
@@ -116,7 +116,7 @@ dialog::backdrop {
     margin: 0;
 }
 
-.prevNextButtons{
+.prevNextButtons {
     display: flex;
     justify-content: space-around;
     margin-top: auto;
@@ -125,7 +125,7 @@ dialog::backdrop {
     bottom: 10px;
 }
 
-.prevNextButtons button{
+.prevNextButtons button {
     background: none;
     border: none;
     cursor: pointer;
@@ -145,7 +145,7 @@ dialog::backdrop {
     ;
 }
 
-.navButton{
+.navButton {
     background: transparent;
     border: none;
     padding: 10px 20px;
@@ -153,7 +153,7 @@ dialog::backdrop {
     color: gray;
 }
 
-.navButton.active{
+.active {
     background-color: #ff5350;
     color: white;
     border-radius: 8px;
@@ -170,16 +170,22 @@ dialog::backdrop {
 }
 
 /* Dialog Progress Bar */
-.progressBar{
+.progressBar {
     border-radius: 10px;
     color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.progressBarInner{
+.progressBarInner {
     background-color: #609668;
     border-radius: 10px;
     padding: 3px;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 /* Footer */

@@ -38,39 +38,51 @@ function getPokemonDialogTemplate(pokemon, index) {
 
         <div id="pokemon-status" class="pokemonStatus none">
             <div class= "progressBar">
+            <strong>hp: </strong> 
               <div class="progressBarInner" style="height:24px;width:${(allPokemon[index].stats[0].base_stat) / 2}%" >
-                <strong>hp: </strong> ${allPokemon[index].stats[0].base_stat}
+                ${allPokemon[index].stats[0].base_stat}
               </div>
             </div>
+
             <div class= "progressBar">
+            <strong>attack: </strong>
               <div class="progressBarInner" style="background-color: #af3b3bff; height:24px;width:${(allPokemon[index].stats[1].base_stat) / 2}%" >
-                <strong>attack: </strong> ${allPokemon[index].stats[1].base_stat}
+                ${allPokemon[index].stats[1].base_stat}
               </div>
             </div>
+
             <div class= "progressBar">
+            <strong>defence: </strong>
               <div class="progressBarInner" style=" background-color: #a49e25ff; height:24px;width:${(allPokemon[index].stats[2].base_stat) / 2}%" >
-                <strong>defence: </strong> ${allPokemon[index].stats[2].base_stat}
+                 ${allPokemon[index].stats[2].base_stat}
               </div>
             </div>
+
             <div class= "progressBar">
+            <strong>special-attack: </strong>
               <div class="progressBarInner" style="background-color: #870909ff; height:24px;width:${(allPokemon[index].stats[3].base_stat) / 2}%" >
-                <strong>special-attack: </strong> ${allPokemon[index].stats[3].base_stat}
+                 ${allPokemon[index].stats[3].base_stat}
               </div>
             </div>
+
             <div class= "progressBar">
+            <strong>special-defence: </strong>
               <div class="progressBarInner" style="background-color: #696e0aff; height:24px;width:${(allPokemon[index].stats[4].base_stat) / 2}%" >
-                <strong>special-defence: </strong> ${allPokemon[index].stats[4].base_stat}
+                 ${allPokemon[index].stats[4].base_stat}
               </div>
             </div>
+
             <div class= "progressBar">
+            <strong>speed: </strong>
               <div class="progressBarInner" style="background-color: #008df1ff; height:24px;width:${(allPokemon[index].stats[5].base_stat) / 2}%" >
-                <strong>speed: </strong> ${allPokemon[index].stats[5].base_stat}
+                 ${allPokemon[index].stats[5].base_stat}
               </div>
             </div>
+
         </div>
         <div class ="prevNextButtons">
-                <button onclick="openPokemonDialog(${index -1})"><img src="./icons/arrow.png" alt="left arrow" /></button>
-                <button onclick="openPokemonDialog(${index +1})"><img src="./icons/right-arrow.png" alt="right arrow" /></button>   
+                <button onclick="openPokemonDialog(${index - 1})"><img src="./icons/arrow.png" alt="left arrow" /></button>
+                <button onclick="openPokemonDialog(${index + 1})"><img src="./icons/right-arrow.png" alt="right arrow" /></button>   
         </div>
     </div>
     `;
