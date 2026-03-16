@@ -36,7 +36,18 @@ function getPokemonDialogTemplate(pokemon, index) {
             <span><strong>Base experience:</strong> ${pokemon.base_experience}</span>
         </div>
 
-        <div id="pokemon-status" class="pokemonStatus none">
+        ${getPokemonStatus(index)};
+        
+        <div class ="prevNextButtons">
+                <button onclick="openPokemonDialog(${index - 1})"><img src="./icons/arrow.png" alt="left arrow" /></button>
+                <button onclick="openPokemonDialog(${index + 1})"><img src="./icons/right-arrow.png" alt="right arrow" /></button>   
+        </div>
+    </div>
+    `;
+}
+
+function getPokemonStatus(index) {
+    return `        <div id="pokemon-status" class="pokemonStatus none">
             <div class= "progressBar">
             <strong>hp: </strong> 
               <div class="progressBarInner" style="height:24px;width:${(allPokemon[index].stats[0].base_stat) / 2}%" >
@@ -78,14 +89,7 @@ function getPokemonDialogTemplate(pokemon, index) {
                  ${allPokemon[index].stats[5].base_stat}
               </div>
             </div>
-
-        </div>
-        <div class ="prevNextButtons">
-                <button onclick="openPokemonDialog(${index - 1})"><img src="./icons/arrow.png" alt="left arrow" /></button>
-                <button onclick="openPokemonDialog(${index + 1})"><img src="./icons/right-arrow.png" alt="right arrow" /></button>   
-        </div>
-    </div>
-    `;
+        </div>`
 }
 
 
