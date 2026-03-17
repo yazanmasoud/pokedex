@@ -1,8 +1,7 @@
 function getPokemonTemplate(pokemon, index) {
     const type = pokemon.types[0].type.name;
-
     return `
-    <div onclick="openPokemonDialog(${index})" class="pokemonCard">
+    <div onclick="openPokemonDialog(${index})" class="pokemonCard ${type}">
         <h2 class="pokemonName"><b>#${pokemon.id}</b> ${pokemon.name}</h2> 
         <img class="pokemonImage" src="${pokemon.sprites.front_default}">
         
@@ -16,6 +15,7 @@ function getPokemonTemplate(pokemon, index) {
 function getPokemonDialogTemplate(pokemon, index) {
     return `
     <div class="pokemonDialogInner" onclick="event.stopPropagation()">
+    <div class="pokemonHero">
         <div class="dialogHeader">
             <h2 class="dialogPokemonName">${pokemon.name}</h2>
             <button onclick="closePokemonDialog()">
@@ -24,7 +24,7 @@ function getPokemonDialogTemplate(pokemon, index) {
         </div>
 
         <img class="dialogImage" src="${pokemon.sprites.other["official-artwork"].front_default}" />
-
+    </div>
         <nav class="dialogNavBar">
             <button id= "nav-button-main" class="navButton active" onclick="openDialogMain()">Main </button>
             <button id= "nav-button-stats" class="navButton" onclick="openDialogStatus()">Status</button>
@@ -37,7 +37,7 @@ function getPokemonDialogTemplate(pokemon, index) {
         </div>
 
         ${getPokemonStatus(index)};
-        
+
         <div class ="prevNextButtons">
                 <button onclick="openPokemonDialog(${index - 1})"><img src="./icons/arrow.png" alt="left arrow" /></button>
                 <button onclick="openPokemonDialog(${index + 1})"><img src="./icons/right-arrow.png" alt="right arrow" /></button>   

@@ -4,7 +4,6 @@ function init() {
     loadPokemon();
 }
 
-
 async function loadPokemon() {
     let response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0");
     let responseToJson = await response.json();
@@ -22,9 +21,10 @@ async function loadPokemon() {
     }
 }
 
-
 function openPokemonDialog(index) {
     let pokemon = allPokemon[index];
+    console.log(pokemon);
+    
     const pokemonDialog = document.getElementById('pokemon-dialog');
     pokemonDialog.innerHTML = getPokemonDialogTemplate(pokemon, index);
     pokemonDialog.showModal();
@@ -46,11 +46,7 @@ function openDialogStatus() {
     let pokemonStatus = document.getElementById('pokemon-status');
     let navButtonMain = document.getElementById('nav-button-main');
     let navButtonStats = document.getElementById('nav-button-stats');
-    pokemonmain.classList.add("none");
-    pokemonStatus.classList.remove("none");
-    navButtonMain.classList.remove("active");
-    navButtonStats.classList.add("active");
-    currentDialogTab = "stats";
+    switchClassActiveToStats(pokemonmain ,pokemonStatus, navButtonMain, navButtonStats);
 
 }
 
@@ -59,6 +55,10 @@ function openDialogMain() {
     let pokemonStatus = document.getElementById('pokemon-status');
     let navButtonMain = document.getElementById('nav-button-main');
     let navButtonStats = document.getElementById('nav-button-stats');
+    switchClassActiveToMain(pokemonmain ,pokemonStatus, navButtonMain, navButtonStats);
+}
+
+function switchClassActiveToMain(pokemonmain ,pokemonStatus, navButtonMain, navButtonStats) {      
     pokemonmain.classList.remove("none");
     pokemonStatus.classList.add("none");
     navButtonMain.classList.add("active");
@@ -66,5 +66,10 @@ function openDialogMain() {
     currentDialogTab = "main"
 }
 
-
-
+function switchClassActiveToStats(pokemonmain ,pokemonStatus, navButtonMain, navButtonStats) {      
+    pokemonmain.classList.add("none");
+    pokemonStatus.classList.remove("none");
+    navButtonMain.classList.remove("active");
+    navButtonStats.classList.add("active");
+    currentDialogTab = "stats";
+}
