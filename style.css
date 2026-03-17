@@ -211,7 +211,7 @@ dialog::backdrop {
 }
 
 .water {
-    background-color: #6890F0;
+    background-color: #537ee0;
 }
 
 .electric {
@@ -244,6 +244,26 @@ dialog::backdrop {
 
 .bug {
     background-color: #A8B820;
+}
+
+.poison {
+    background-color: #A040A0;
+}
+
+.ground {
+    background-color: #E0C068;
+}
+
+.fighting {
+    background-color: #C03028;
+}
+
+.rock {
+    background-color: #B8A038;
+}
+
+.ghost {
+    background-color: #705898;
 }
 /* Footer */
 .footerInner {
