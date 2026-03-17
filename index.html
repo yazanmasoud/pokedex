@@ -7,6 +7,7 @@
     <title>Pokedex</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/standards.css">
+    <link rel="stylesheet" href="./styles/pokemonBackground.css">
     <script src="./scripts/templates.js"></script>
     <script src="script.js" defer></script>
 </head>
@@ -16,14 +17,14 @@
         <div class="headerInner"> 
         </div>
     </header>
-
+    <div class="mainContent">
     <main class="pokemonContainer content" id="pokemon-container">
-    </main>
-    <dialog class="pokemonDialog" id="pokemon-dialog">
-        
-    </dialog>
+    <dialog class="pokemonDialog" id="pokemon-dialog"></dialog>
     
-<button onclick="loadMorePokemon()" class="loadMoreButton">Load More</button>
+    
+    </main>
+    <button onclick="loadMorePokemon()" class="loadMoreButton">Load More</button>
+    </div>
 
     <footer>
         <div class="footerInner">
