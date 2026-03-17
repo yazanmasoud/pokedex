@@ -1,11 +1,13 @@
 let allPokemon = [];
 let currentDialogTab = "main";
+let limit = 20;
+let offset = 0;
 function init() {
     loadPokemon();
 }
 
 async function loadPokemon() {
-    let response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100&offset=0");
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
     let responseToJson = await response.json();
 
     let pokemonList = responseToJson.results;
@@ -24,13 +26,13 @@ async function loadPokemon() {
 function openPokemonDialog(index) {
     let pokemon = allPokemon[index];
     console.log(pokemon);
-    
+
     const pokemonDialog = document.getElementById('pokemon-dialog');
     pokemonDialog.innerHTML = getPokemonDialogTemplate(pokemon, index);
     pokemonDialog.showModal();
-    if (currentDialogTab === "main"){
+    if (currentDialogTab === "main") {
         openDialogMain();
-    }else {
+    } else {
         openDialogStatus();
     }
 }
@@ -46,7 +48,7 @@ function openDialogStatus() {
     let pokemonStatus = document.getElementById('pokemon-status');
     let navButtonMain = document.getElementById('nav-button-main');
     let navButtonStats = document.getElementById('nav-button-stats');
-    switchClassActiveToStats(pokemonmain ,pokemonStatus, navButtonMain, navButtonStats);
+    switchClassActiveToStats(pokemonmain, pokemonStatus, navButtonMain, navButtonStats);
 
 }
 
@@ -55,10 +57,10 @@ function openDialogMain() {
     let pokemonStatus = document.getElementById('pokemon-status');
     let navButtonMain = document.getElementById('nav-button-main');
     let navButtonStats = document.getElementById('nav-button-stats');
-    switchClassActiveToMain(pokemonmain ,pokemonStatus, navButtonMain, navButtonStats);
+    switchClassActiveToMain(pokemonmain, pokemonStatus, navButtonMain, navButtonStats);
 }
 
-function switchClassActiveToMain(pokemonmain ,pokemonStatus, navButtonMain, navButtonStats) {      
+function switchClassActiveToMain(pokemonmain, pokemonStatus, navButtonMain, navButtonStats) {
     pokemonmain.classList.remove("none");
     pokemonStatus.classList.add("none");
     navButtonMain.classList.add("active");
@@ -66,10 +68,16 @@ function switchClassActiveToMain(pokemonmain ,pokemonStatus, navButtonMain, navB
     currentDialogTab = "main"
 }
 
-function switchClassActiveToStats(pokemonmain ,pokemonStatus, navButtonMain, navButtonStats) {      
+function switchClassActiveToStats(pokemonmain, pokemonStatus, navButtonMain, navButtonStats) {
     pokemonmain.classList.add("none");
     pokemonStatus.classList.remove("none");
     navButtonMain.classList.remove("active");
     navButtonStats.classList.add("active");
     currentDialogTab = "stats";
+}
+
+function loadMorePokemon() {
+    if (offset>=80)return;
+    offset+=20;
+    loadPokemon();
 }

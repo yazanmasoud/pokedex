@@ -265,6 +265,11 @@ dialog::backdrop {
 .ghost {
     background-color: #705898;
 }
+
+.loadMoreButton {
+    border: solid;
+    background-color: orange;
+}
 /* Footer */
 .footerInner {
     background-color: rgba(250, 32, 32, 0.799);
