@@ -36,7 +36,7 @@ function getPokemonDialogTemplate(pokemon, index) {
             <span><strong>Base experience:</strong> ${pokemon.base_experience}</span>
         </div>
 
-        ${getPokemonStatus(index)};
+        ${getPokemonStatus(index)}
 
         <div class ="prevNextButtons">
                 <button onclick="openPokemonDialog(${index - 1})"><img src="./icons/arrow.png" alt="left arrow" /></button>
@@ -47,10 +47,10 @@ function getPokemonDialogTemplate(pokemon, index) {
 }
 
 function getPokemonStatus(index) {
-    return `        <div id="pokemon-status" class="pokemonStatus none">
+    return `<div id="pokemon-status" class="pokemonStatus none">
             <div class= "progressBar">
             <strong>hp: </strong> 
-              <div class="progressBarInner" style="height:24px;width:${(allPokemon[index].stats[0].base_stat) / 2}%" >
+              <div class="progressBarInner" style="height:24px; width:${(allPokemon[index].stats[0].base_stat) / 2}%" >
                 ${allPokemon[index].stats[0].base_stat}
               </div>
             </div>
@@ -89,7 +89,7 @@ function getPokemonStatus(index) {
                  ${allPokemon[index].stats[5].base_stat}
               </div>
             </div>
-        </div>`
+        </div>`;
 }
 
 

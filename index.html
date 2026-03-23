@@ -13,17 +13,23 @@
 </head>
 
 <body onload="init()">
-    <header>
-        <div class="headerInner"> 
+    <header class="headerSite">
+        <div class="headerInner content">
+            <div>
+            <input id="search-field" 
+            class="searchField" 
+            type="text" 
+            placeholder="Type Pokemon name..."
+            onkeyup="findPokemonName()">
+            </div> 
         </div>
     </header>
     <div class="mainContent">
-    <main class="pokemonContainer content" id="pokemon-container">
-    <dialog class="pokemonDialog" id="pokemon-dialog"></dialog>
-    
-    
-    </main>
-    <button onclick="loadMorePokemon()" class="loadMoreButton">Load More</button>
+        <main class="pokemonContainer content" id="pokemon-container">
+        <dialog class="pokemonDialog" id="pokemon-dialog"></dialog>
+        </main>
+
+        <button onclick="loadMorePokemon()" class="loadMoreButton">Load More</button>
     </div>
 
     <footer>

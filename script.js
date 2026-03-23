@@ -9,7 +9,6 @@ function init() {
 async function loadPokemon() {
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
     let responseToJson = await response.json();
-
     let pokemonList = responseToJson.results;
 
     for (let i = 0; i < pokemonList.length; i++) {
@@ -81,3 +80,10 @@ function loadMorePokemon() {
     offset+=20;
     loadPokemon();
 }
+
+function findPokemonName() {
+    let inputSubname = document.getElementById('search-field').value.toLowerCase();
+    let pok = allPokemon.filter(pok => pok.name.includes(inputSubname))
+    console.log(pok);  
+}
+
