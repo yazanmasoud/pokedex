@@ -42,37 +42,52 @@ function closePokemonDialog() {
     pokemonDialog.close();
 }
 
-function openDialogStatus() {
-    let pokemonmain = document.getElementById('pokemon-main');
-    let pokemonStatus = document.getElementById('pokemon-status');
-    let pokemonEvolution = document.getElementById('pokemon-evolution')
-    let navButtonMain = document.getElementById('nav-button-main');
-    let navButtonStats = document.getElementById('nav-button-stats');
-    let navButtonEvolution = document.getElementById('nav-button-evolution');
-    switchClassActiveToStats(pokemonmain, pokemonStatus, navButtonMain, navButtonStats, pokemonEvolution, navButtonEvolution);
+/* ----------------------------------------------- */
+function getDialogElements() {
+    return {
+        pokemonmain: document.getElementById('pokemon-main'),
+        pokemonStatus: document.getElementById('pokemon-status'),
+        pokemonEvolution: document.getElementById('pokemon-evolution'),
+        navButtonMain: document.getElementById('nav-button-main'),
+        navButtonStats: document.getElementById('nav-button-stats'),
+        navButtonEvolution: document.getElementById('nav-button-evolution')
+    }
+}
 
+function openDialogStatus() {
+    let el = getDialogElements();
+    switchClassActiveToStats(
+        el.pokemonmain,
+        el.pokemonStatus,
+        el.navButtonMain,
+        el.navButtonStats,
+        el.pokemonEvolution,
+        el.navButtonEvolution);
 }
 
 function openDialogMain() {
-    let pokemonmain = document.getElementById('pokemon-main');
-    let pokemonStatus = document.getElementById('pokemon-status');
-    let pokemonEvolution = document.getElementById('pokemon-evolution')
-    let navButtonEvolution = document.getElementById('nav-button-evolution');
-    let navButtonMain = document.getElementById('nav-button-main');
-    let navButtonStats = document.getElementById('nav-button-stats');
-    switchClassActiveToMain(pokemonmain, pokemonStatus, navButtonMain, navButtonStats, pokemonEvolution, navButtonEvolution);
+    let el = getDialogElements();
+    switchClassActiveToMain(
+            el.pokemonmain,
+            el.pokemonStatus,
+            el.navButtonMain,
+            el.navButtonStats,
+            el.pokemonEvolution,
+            el.navButtonEvolution);
 }
 
 function openDialogEvolution() {
-    let pokemonmain = document.getElementById('pokemon-main');
-    let pokemonStatus = document.getElementById('pokemon-status');
-    let pokemonEvolution = document.getElementById('pokemon-evolution')
-    let navButtonEvolution = document.getElementById('nav-button-evolution');
-    let navButtonMain = document.getElementById('nav-button-main');
-    let navButtonStats = document.getElementById('nav-button-stats');
-    switchClassActiveToEvolution(pokemonmain, pokemonStatus, navButtonMain, navButtonStats, pokemonEvolution, navButtonEvolution);
-}
+    let el = getDialogElements();
 
+    switchClassActiveToEvolution(
+        el.pokemonmain,
+        el.pokemonStatus,
+        el.navButtonMain,
+        el.navButtonStats,
+        el.pokemonEvolution,
+        el.navButtonEvolution);
+}
+/* ----------------------------------------------------- */
 
 function switchClassActiveToMain(pokemonmain, pokemonStatus, navButtonMain, navButtonStats, pokemonEvolution, navButtonEvolution) {
     pokemonmain.classList.remove("none");
