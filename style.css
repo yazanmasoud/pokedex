@@ -4,7 +4,7 @@
     margin: auto;
 }
 
-.green{
+.green {
     background-color: #609668;
 }
 
@@ -35,7 +35,7 @@
     color: white;
     padding: 20px;
     background-color: rgb(64, 64, 68);
-    transition: transform 0.2s; 
+    transition: transform 0.2s;
 }
 
 .mainContent {
@@ -100,12 +100,12 @@ dialog::backdrop {
     gap: 10px;
 }
 
-.pokemonHero{
+.pokemonHero {
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
 .esc-img {
@@ -133,6 +133,14 @@ dialog::backdrop {
 }
 
 .pokemonStatus {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    color: white;
+}
+
+.pokemonEvolution {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -228,6 +236,7 @@ dialog::backdrop {
     height: 30px;
     margin: 40px;
 }
+
 /* Footer */
 .footerInner {
     background-color: rgba(250, 32, 32, 0.799);

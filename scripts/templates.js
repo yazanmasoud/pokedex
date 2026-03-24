@@ -28,6 +28,7 @@ function getPokemonDialogTemplate(pokemon, index) {
         <nav class="dialogNavBar">
             <button id= "nav-button-main" class="navButton active" onclick="openDialogMain()">Main </button>
             <button id= "nav-button-stats" class="navButton" onclick="openDialogStatus()">Status</button>
+            <button id= "nav-button-evolution" class="navButton" onclick="openDialogEvolution()">Evolution</button>
         </nav>
 
         <div id="pokemon-main" class="pokemonMain">
@@ -37,6 +38,7 @@ function getPokemonDialogTemplate(pokemon, index) {
         </div>
 
         ${getPokemonStatus(index)}
+        ${getPokemonEvolution()}
 
         <div class ="prevNextButtons">
                 <button onclick="openPokemonDialog(${index - 1})"><img src="./icons/arrow.png" alt="left arrow" /></button>
@@ -90,6 +92,11 @@ function getPokemonStatus(index) {
               </div>
             </div>
         </div>`;
+
+
+}
+function getPokemonEvolution() {
+    return `<div id="pokemon-evolution"></div>`;
 }
 
 
