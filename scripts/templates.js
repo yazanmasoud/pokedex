@@ -12,7 +12,7 @@ function getPokemonTemplate(pokemon, index) {
     `;
 }
 
-function getPokemonDialogTemplate(pokemon, index, chainEvolutionChainToJson) {
+function getPokemonDialogTemplate(pokemon, index) {
     return `
     <div class="pokemonDialogInner" onclick="event.stopPropagation()">
     <div class="pokemonHero">
@@ -33,7 +33,7 @@ function getPokemonDialogTemplate(pokemon, index, chainEvolutionChainToJson) {
 
         ${getPokemonMain(pokemon)}
         ${getPokemonStatus(index)}
-        <div id="pokemon-main" class="pokemonMain"></div>
+        <div id="pokemon-evolution" class="pokemonEvolution none"></div>
 
         <div class ="prevNextButtons">
                 <button onclick="openPokemonDialog(${index - 1})"><img src="./icons/arrow.png" alt="left arrow" /></button>

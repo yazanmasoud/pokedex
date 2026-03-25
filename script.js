@@ -25,8 +25,11 @@ async function loadPokemon() {
 }
 
 function openPokemonDialog(index) {
+        if (index < 0 || index >= allPokemon.length) {
+        return;
+    }
+
     let pokemon = allPokemon[index];
-    console.log(pokemon);
     currentPokemonIndex = index;
     const pokemonDialog = document.getElementById('pokemon-dialog');
     pokemonDialog.innerHTML = getPokemonDialogTemplate(pokemon, index);
@@ -38,6 +41,8 @@ function openPokemonDialog(index) {
     } else {
         openDialogEvolution();
     }
+    console.log(pokemon);
+    
 }
 
 function closePokemonDialog() {
@@ -72,12 +77,12 @@ function openDialogStatus() {
 function openDialogMain() {
     let el = getDialogElements();
     switchClassActiveToMain(
-            el.pokemonmain,
-            el.pokemonStatus,
-            el.navButtonMain,
-            el.navButtonStats,
-            el.pokemonEvolution,
-            el.navButtonEvolution);
+        el.pokemonmain,
+        el.pokemonStatus,
+        el.navButtonMain,
+        el.navButtonStats,
+        el.pokemonEvolution,
+        el.navButtonEvolution);
 }
 
 async function openDialogEvolution() {
@@ -90,22 +95,31 @@ async function openDialogEvolution() {
         el.pokemonEvolution,
         el.navButtonEvolution);
 
-        let evolution = await fetch (allPokemon[currentPokemonIndex].species.url);
-        let evolutionToJson = await evolution.json();
-        
-        let evolutionChain = await fetch(evolutionToJson.evolution_chain.url);
-        let evolutionChainToJson = await evolutionChain.json();
-        let chainEvolutionChainToJson = evolutionChainToJson.chain;
+    let evolution = await fetch(allPokemon[currentPokemonIndex].species.url);
+    let evolutionToJson = await evolution.json();
 
-        document.getElementById('pokemon-evolution').innerHTML = 
-        `<h2>${chainEvolutionChainToJson.species.name}</h2>
-        <h2>${chainEvolutionChainToJson.evolves_to[0].species.name}</h2>
-        <h2>${chainEvolutionChainToJson.evolves_to[0].evolves_to[0].species.name}</h2>
+    let evolutionChain = await fetch(evolutionToJson.evolution_chain.url);
+    let evolutionChainToJson = await evolutionChain.json();
+    let chain = evolutionChainToJson.chain;
 
-        `;
-        console.log(chainEvolutionChainToJson);
+
+
+    let chainPokemons = [];
+    let current = chain;
+
+        while (current){
+            chainPokemons.push(current.species.name)
+              if (current.evolves_to.length > 0){
+                current = current.evolves_to[0];
+              }else {
+                current = null;
+              }      
+        }
+        document.getElementById('pokemon-evolution').innerHTML =
+    chainPokemons.map(name => `<h2>${name}</h2>`).join("");
+        console.log(chainPokemons);
         
-        
+
 }
 /* ----------------------------------------------------- */
 
