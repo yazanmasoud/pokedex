@@ -2,6 +2,7 @@ let allPokemon = [];
 let currentDialogTab = "main";
 let limit = 20;
 let offset = 0;
+let currentPokemonIndex = 0;
 function init() {
     loadPokemon();
 }
@@ -25,14 +26,16 @@ async function loadPokemon() {
 function openPokemonDialog(index) {
     let pokemon = allPokemon[index];
     console.log(pokemon);
-
+    currentPokemonIndex = index;
     const pokemonDialog = document.getElementById('pokemon-dialog');
     pokemonDialog.innerHTML = getPokemonDialogTemplate(pokemon, index);
     pokemonDialog.showModal();
     if (currentDialogTab === "main") {
         openDialogMain();
-    } else {
+    } else if (currentDialogTab === "stats") {
         openDialogStatus();
+    } else {
+        openDialogEvolution();
     }
 }
 
@@ -76,9 +79,8 @@ function openDialogMain() {
             el.navButtonEvolution);
 }
 
-function openDialogEvolution() {
+async function openDialogEvolution() {
     let el = getDialogElements();
-
     switchClassActiveToEvolution(
         el.pokemonmain,
         el.pokemonStatus,
@@ -86,6 +88,15 @@ function openDialogEvolution() {
         el.navButtonStats,
         el.pokemonEvolution,
         el.navButtonEvolution);
+
+        let evolution = await fetch (allPokemon[currentPokemonIndex].species.url);
+        let evolutionToJson = await evolution.json();
+        
+        let evolutionChain = await fetch(evolutionToJson.evolution_chain.url);
+        let evolutionChainToJson = await evolutionChain.json();
+        console.log(evolutionChainToJson);
+        
+        
 }
 /* ----------------------------------------------------- */
 
