@@ -3,6 +3,7 @@ let currentDialogTab = "main";
 let limit = 20;
 let offset = 0;
 let currentPokemonIndex = 0;
+
 function init() {
     loadPokemon();
 }
@@ -94,7 +95,15 @@ async function openDialogEvolution() {
         
         let evolutionChain = await fetch(evolutionToJson.evolution_chain.url);
         let evolutionChainToJson = await evolutionChain.json();
-        console.log(evolutionChainToJson);
+        let chainEvolutionChainToJson = evolutionChainToJson.chain;
+
+        document.getElementById('pokemon-evolution').innerHTML = 
+        `<h2>${chainEvolutionChainToJson.species.name}</h2>
+        <h2>${chainEvolutionChainToJson.evolves_to[0].species.name}</h2>
+        <h2>${chainEvolutionChainToJson.evolves_to[0].evolves_to[0].species.name}</h2>
+
+        `;
+        console.log(chainEvolutionChainToJson);
         
         
 }

@@ -12,7 +12,7 @@ function getPokemonTemplate(pokemon, index) {
     `;
 }
 
-function getPokemonDialogTemplate(pokemon, index) {
+function getPokemonDialogTemplate(pokemon, index, chainEvolutionChainToJson) {
     return `
     <div class="pokemonDialogInner" onclick="event.stopPropagation()">
     <div class="pokemonHero">
@@ -31,14 +31,9 @@ function getPokemonDialogTemplate(pokemon, index) {
             <button id= "nav-button-evolution" class="navButton" onclick="openDialogEvolution()">Evolution</button>
         </nav>
 
-        <div id="pokemon-main" class="pokemonMain">
-            <span><strong>Height:</strong> ${(pokemon.height * 0.1).toFixed(1)} m</span>
-            <span><strong>Weight:</strong> ${(pokemon.weight * 0.1).toFixed(2)} kg</span>
-            <span><strong>Base experience:</strong> ${pokemon.base_experience}</span>
-        </div>
-
+        ${getPokemonMain(pokemon)}
         ${getPokemonStatus(index)}
-        ${getPokemonEvolution()}
+        <div id="pokemon-main" class="pokemonMain"></div>
 
         <div class ="prevNextButtons">
                 <button onclick="openPokemonDialog(${index - 1})"><img src="./icons/arrow.png" alt="left arrow" /></button>
@@ -46,6 +41,16 @@ function getPokemonDialogTemplate(pokemon, index) {
         </div>
     </div>
     `;
+}
+
+function getPokemonMain(pokemon) {
+    return `
+            <div id="pokemon-main" class="pokemonMain">
+            <span><strong>Height:</strong> ${(pokemon.height * 0.1).toFixed(1)} m</span>
+            <span><strong>Weight:</strong> ${(pokemon.weight * 0.1).toFixed(2)} kg</span>
+            <span><strong>Base experience:</strong> ${pokemon.base_experience}</span>
+            </div>
+    `
 }
 
 function getPokemonStatus(index) {
@@ -94,9 +99,6 @@ function getPokemonStatus(index) {
         </div>`;
 
 
-}
-function getPokemonEvolution() {
-    return `<div id="pokemon-evolution"></div>`;
 }
 
 
