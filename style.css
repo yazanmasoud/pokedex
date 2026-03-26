@@ -238,7 +238,7 @@ dialog::backdrop {
 }
 
 /* spinner */
-.loading-spinner {
+.loadingSpinner {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -252,6 +252,11 @@ dialog::backdrop {
 
     animation: spin 1s linear infinite;
     display: none;
+}
+
+/* no scroll */
+.noScroll {
+    overflow: hidden;
 }
 
 @keyframes spin {

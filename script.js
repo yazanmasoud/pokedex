@@ -3,14 +3,13 @@ let currentDialogTab = "main";
 let limit = 20;
 let offset = 0;
 let currentPokemonIndex = 0;
-let isLoading = false;
+let isLoading = false
 function init() {
     loadPokemon();
 }
 
 async function loadPokemon() {
     showLoadingSpinner();
-
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
     let responseToJson = await response.json();
     let pokemonList = responseToJson.results;
@@ -23,8 +22,8 @@ async function loadPokemon() {
         newPokemon.push(pokemonResponseToJson);
     }
     allPokemon.push(...newPokemon);
-    hideLoadingSpinner();
     renderPokemon(newPokemon);
+    hideLoadingSpinner();
 }
 
 function renderPokemon(newPokemon) {
@@ -38,7 +37,6 @@ function renderPokemon(newPokemon) {
 }
 
 function openPokemonDialog(index) {
-
     if (index < 0 || index >= allPokemon.length || isLoading) {
         return;
     }
@@ -47,6 +45,7 @@ function openPokemonDialog(index) {
     const pokemonDialog = document.getElementById('pokemon-dialog');
     pokemonDialog.innerHTML = getPokemonDialogTemplate(pokemon, index);
     pokemonDialog.showModal();
+    document.body.classList.add("noScroll");
     openDialogElements();
 }
 
@@ -64,9 +63,9 @@ function closePokemonDialog() {
     console.log("dialog closed");
     const pokemonDialog = document.getElementById('pokemon-dialog');
     pokemonDialog.close();
+    document.body.classList.remove("noScroll");
 }
 
-/* ----------------------------------------------- */
 function getDialogElements() {
     return {
         pokemonmain: document.getElementById('pokemon-main'),
@@ -103,7 +102,6 @@ function openDialogMain() {
 async function openDialogEvolution() {
     let el = getDialogElements();
     switchClassActiveToEvolution(el.pokemonmain, el.pokemonStatus, el.navButtonMain, el.navButtonStats, el.pokemonEvolution, el.navButtonEvolution);
-
     let evolution = await fetch(allPokemon[currentPokemonIndex].species.url);
     let evolutionToJson = await evolution.json();
     let evolutionChain = await fetch(evolutionToJson.evolution_chain.url);
@@ -124,7 +122,6 @@ async function openDialogEvolution() {
     document.getElementById('pokemon-evolution').innerHTML =
         chainPokemons.map(name => `<h2>${name}</h2>`).join("");
 }
-/* ----------------------------------------------------- */
 
 function switchClassActiveToMain(pokemonmain, pokemonStatus, navButtonMain, navButtonStats, pokemonEvolution, navButtonEvolution) {
     pokemonmain.classList.remove("none");
@@ -156,12 +153,14 @@ function switchClassActiveToEvolution(pokemonmain, pokemonStatus, navButtonMain,
     currentDialogTab = "evolution";
 }
 
-function loadMorePokemon() {
+async function loadMorePokemon() {
+    if (isLoading) return;
+    isLoading = true;
 
-    if (offset >= 80) return;
     offset += 20;
-    loadPokemon();
+   await loadPokemon();
 
+   isLoading = false;
 }
 
 function findPokemonName() {
@@ -175,7 +174,7 @@ function findPokemonName() {
 }
 
 function showLoadingSpinner() {
-    document.getElementById('loading-spinner').style.display = "block";
+    document.getElementById('loading-spinner').style.display = "flex";
 }
 
 function hideLoadingSpinner() {

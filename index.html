@@ -8,26 +8,22 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/standards.css">
     <link rel="stylesheet" href="./styles/pokemonBackground.css">
-    <script src="./scripts/templates.js"></script>
-    <script src="script.js" defer></script>
+
 </head>
 
 <body onload="init()">
     <header class="headerSite">
         <div class="headerInner content">
             <div>
-            <input id="search-field" 
-            class="searchField" 
-            type="text" 
-            placeholder="Type Pokemon name..."
-            onkeyup="findPokemonName()">
-            </div> 
+                <input id="search-field" class="searchField" type="text" placeholder="Type Pokemon name..."
+                    onkeyup="findPokemonName()">
+            </div>
         </div>
     </header>
-    <div id="loading-spinner" class="loadingSpinner">Loading...</div>
+    <div id="loading-spinner" class="loadingSpinner"></div>
     <div class="mainContent">
         <main class="pokemonContainer content" id="pokemon-container">
-        
+
         </main>
 
         <button onclick="loadMorePokemon()" class="loadMoreButton">Load More</button>
@@ -39,5 +35,7 @@
         </div>
     </footer>
 </body>
+    <script src="./scripts/templates.js"></script>
+<script src="script.js"></script>
 
 </html>
