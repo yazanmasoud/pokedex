@@ -3,13 +3,15 @@ let currentDialogTab = "main";
 let limit = 20;
 let offset = 0;
 let currentPokemonIndex = 0;
-
+let isLoading = false;
 function init() {
     loadPokemon();
 }
 
 async function loadPokemon() {
+    showLoadingSpinner()
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+
     let responseToJson = await response.json();
     let pokemonList = responseToJson.results;
 
@@ -20,14 +22,16 @@ async function loadPokemon() {
 
         allPokemon.push(pokemonResponseToJson);
 
-        document.getElementById('pokemon-container').innerHTML += getPokemonTemplate(pokemonResponseToJson, i);
+        document.getElementById('pokemon-container').innerHTML += getPokemonTemplate(pokemonResponseToJson, allPokemon.length - 1);
     }
+    hideLoadingSpinner()
 }
 
 function openPokemonDialog(index) {
-        if (index < 0 || index >= allPokemon.length) {
+    if (index < 0 || index >= allPokemon.length) {
         return;
     }
+    if (isLoading) return;
 
     let pokemon = allPokemon[index];
     currentPokemonIndex = index;
@@ -42,7 +46,7 @@ function openPokemonDialog(index) {
         openDialogEvolution();
     }
     console.log(pokemon);
-    
+
 }
 
 function closePokemonDialog() {
@@ -98,6 +102,7 @@ async function openDialogEvolution() {
     let evolution = await fetch(allPokemon[currentPokemonIndex].species.url);
     let evolutionToJson = await evolution.json();
 
+
     let evolutionChain = await fetch(evolutionToJson.evolution_chain.url);
     let evolutionChainToJson = await evolutionChain.json();
     let chain = evolutionChainToJson.chain;
@@ -107,19 +112,16 @@ async function openDialogEvolution() {
     let chainPokemons = [];
     let current = chain;
 
-        while (current){
-            chainPokemons.push(current.species.name)
-              if (current.evolves_to.length > 0){
-                current = current.evolves_to[0];
-              }else {
-                current = null;
-              }      
+    while (current) {
+        chainPokemons.push(current.species.name)
+        if (current.evolves_to.length > 0) {
+            current = current.evolves_to[0];
+        } else {
+            current = null;
         }
-        document.getElementById('pokemon-evolution').innerHTML =
-    chainPokemons.map(name => `<h2>${name}</h2>`).join("");
-        console.log(chainPokemons);
-        
-
+    }
+    document.getElementById('pokemon-evolution').innerHTML =
+        chainPokemons.map(name => `<h2>${name}</h2>`).join("");
 }
 /* ----------------------------------------------------- */
 
@@ -168,6 +170,14 @@ function findPokemonName() {
         document.getElementById('pokemon-container').innerHTML += getPokemonTemplate(element, allPokemon.indexOf(element));
     }
 
+}
+
+function showLoadingSpinner() {
+    document.getElementById('loading-spinner').style.display = "block";
+}
+
+function hideLoadingSpinner() {
+    document.getElementById('loading-spinner').style.display = "none";
 }
 
 
