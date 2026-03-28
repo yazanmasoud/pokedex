@@ -1,6 +1,6 @@
 function getPokemonTemplate(pokemon, index) {
-    const type = pokemon.types[0].type.name;
-    return `
+  const type = pokemon.types[0].type.name;
+  return `
     <div onclick="openPokemonDialog(${index})" class="pokemonCard ${type}">
         <h2 class="pokemonName"><b>#${pokemon.id}</b> ${pokemon.name}</h2> 
         <img class="pokemonImage" src="${pokemon.sprites.front_default}">
@@ -13,13 +13,14 @@ function getPokemonTemplate(pokemon, index) {
 }
 
 function getPokemonDialogTemplate(pokemon, index) {
-    return `
+  return `
     <div class="pokemonDialogInner" onclick="event.stopPropagation()">
     <div class="pokemonHero">
         <div class="dialogHeader">
             <h2 class="dialogPokemonName">${pokemon.name}</h2>
             <button onclick="closePokemonDialog()">
-                <img class="esc-img" src="./icons/delete.svg" alt="">
+                <img class="esc-img" src="./images/icons8-exit-40.png" alt="exit">
+                
             </button>
         </div>
 
@@ -34,17 +35,14 @@ function getPokemonDialogTemplate(pokemon, index) {
         ${getPokemonMain(pokemon)}
         ${getPokemonStatus(index)}
         <div id="pokemon-evolution" class="pokemonEvolution none"></div>
+        ${getNextOrPrevDialog(index)}
 
-        <div class ="prevNextButtons">
-                <button onclick="openPokemonDialog(${index - 1})"><img src="./icons/arrow.png" alt="left arrow" /></button>
-                <button onclick="openPokemonDialog(${index + 1})"><img src="./icons/right-arrow.png" alt="right arrow" /></button>   
-        </div>
     </div>
     `;
 }
 
 function getPokemonMain(pokemon) {
-    return `
+  return `
             <div id="pokemon-main" class="pokemonMain">
             <span><strong>Height:</strong> ${(pokemon.height * 0.1).toFixed(1)} m</span>
             <span><strong>Weight:</strong> ${(pokemon.weight * 0.1).toFixed(2)} kg</span>
@@ -54,7 +52,7 @@ function getPokemonMain(pokemon) {
 }
 
 function getPokemonStatus(index) {
-    return `<div id="pokemon-status" class="pokemonStatus none">
+  return `<div id="pokemon-status" class="pokemonStatus none">
             <div class= "progressBar">
             <strong>hp: </strong> 
               <div class="progressBarInner" style="height:24px; width:${(allPokemon[index].stats[0].base_stat) / 2}%" >
@@ -97,6 +95,22 @@ function getPokemonStatus(index) {
               </div>
             </div>
         </div>`;
+}
+
+function getNextOrPrevDialog(index) {
+  return `
+          <div class ="prevNextButtons">
+          ${index > 0 ? `
+          <button onclick="openPokemonDialog(${index - 1})">
+              <img src="./icons/arrow.png" alt="left arrow" />
+          </button>` : ""}
+
+          ${index < allPokemon.length - 1 ? `
+          <button onclick="openPokemonDialog(${index + 1})">
+              <img src="./icons/right-arrow.png" alt="right arrow" />
+          </button>` : ""}
+        </div>
+  `
 }
 
 
