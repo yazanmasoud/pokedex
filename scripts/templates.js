@@ -97,8 +97,6 @@ function getPokemonStatus(index) {
               </div>
             </div>
         </div>`;
-
-
 }
 
 

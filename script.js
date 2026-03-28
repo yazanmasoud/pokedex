@@ -10,20 +10,28 @@ function init() {
 
 async function loadPokemon() {
     showLoadingSpinner();
-    let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
-    let responseToJson = await response.json();
-    let pokemonList = responseToJson.results;
-    let newPokemon = [];
-    for (let i = 0; i < pokemonList.length; i++) {
-        const pokemon = pokemonList[i];
-        let pokemonResponse = await fetch(pokemon.url);
-        let pokemonResponseToJson = await pokemonResponse.json();
 
-        newPokemon.push(pokemonResponseToJson);
+    try {
+        let response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+        let responseToJson = await response.json();
+        let pokemonList = responseToJson.results;
+        let newPokemon = [];
+
+        for (let i = 0; i < pokemonList.length; i++) {
+            const pokemon = pokemonList[i];
+            let pokemonResponse = await fetch(pokemon.url);
+            let pokemonResponseToJson = await pokemonResponse.json();
+            newPokemon.push(pokemonResponseToJson);
+        }
+
+        allPokemon.push(...newPokemon);
+        renderPokemon(newPokemon);
+
+    } catch (error) {
+        console.error("Fehler beim Laden der Pokemon:", error);
+    } finally {
+        hideLoadingSpinner();
     }
-    allPokemon.push(...newPokemon);
-    renderPokemon(newPokemon);
-    hideLoadingSpinner();
 }
 
 function renderPokemon(newPokemon) {

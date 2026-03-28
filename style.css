@@ -105,7 +105,6 @@ dialog::backdrop {
     width: 100%;
     flex-direction: column;
     align-items: center;
-
 }
 
 .esc-img {
@@ -176,12 +175,10 @@ dialog::backdrop {
 
 /* DialogNavigation Bar */
 .dialogNavBar {
-
     width: 100%;
     display: flex;
     justify-content: space-around;
     background-color: rgba(190, 134, 134, 0.799);
-    ;
 }
 
 .navButton {
@@ -224,7 +221,6 @@ dialog::backdrop {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 /* LoadMore Butoon */
@@ -243,20 +239,13 @@ dialog::backdrop {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     width: 50px;
     height: 50px;
     border: 5px solid lightgray;
     border-top: 5px solid #3b4cca;
     border-radius: 50%;
-
     animation: spin 1s linear infinite;
     display: none;
-}
-
-/* no scroll */
-.noScroll {
-    overflow: hidden;
 }
 
 @keyframes spin {
@@ -267,6 +256,11 @@ dialog::backdrop {
     100% {
         transform: rotate(360deg);
     }
+}
+
+/* no scroll */
+.noScroll {
+    overflow: hidden;
 }
 
 /* Footer */
